@@ -223,7 +223,8 @@ footer .footer-main { grid-template-columns: 1fr 1fr 1.2fr; }
   box-shadow: var(--panel-shadow);
 }
 .home-page .hero-visual { width: 100%; height: auto; min-height: 0; aspect-ratio: 16 / 9; }
-.home-page .hero-visual::after, .home-page .hero-visual .slider-controls { display: none; }
+.home-page .hero-visual::after { display: none; }
+.home-page .hero-visual img { object-position: center; }
 .home-page .hero-film figcaption {
   display: flex;
   gap: 12px;
@@ -296,7 +297,7 @@ footer .footer-main { grid-template-columns: 1fr 1fr 1.2fr; }
 .home-page .product-caption { padding: 8px 12px; gap: 8px; }
 .home-page .product-caption h3 { font-size: 16px; }
 .home-page .product-caption .icon { width: 30px; height: 30px; padding: 6px; border-color: var(--gold); }
-.home-page .expertise-photo img { object-fit: cover; }
+.home-page .expertise-grid { display: block; max-width: 760px; }
 .home-page .project-slider .crossfade { height: clamp(320px, 43vw, 620px); }
 .home-page .testimonials { gap: 24px; margin-block-start: clamp(28px, 5vw, 60px); }
 .home-page .quote {
