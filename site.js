@@ -35,3 +35,36 @@ show(0);updatePause();instances.push({schedule});
 (()=>{const root=document.querySelector('[data-catalog]');if(!root)return;const cards=[...root.querySelectorAll('.catalog-card')],search=root.querySelector('[data-search]'),more=root.querySelector('[data-more]'),status=root.querySelector('[data-status]'),empty=root.querySelector('[data-empty]');let limit=12;
 function update(){const query=search.value.trim().toLocaleLowerCase('he');const matches=cards.filter(card=>card.dataset.name.includes(query));const allowed=new Set(matches.slice(0,limit));cards.forEach(card=>card.hidden=!allowed.has(card));more.hidden=matches.length<=limit;empty.hidden=matches.length>0;status.textContent=matches.length+' מוצרים';}
 search.addEventListener('input',()=>{limit=12;update();});more.addEventListener('click',()=>{const shown=cards.filter(c=>!c.hidden).length;limit+=12;update();const now=cards.filter(c=>!c.hidden);if(now[shown]){const link=now[shown].querySelector('h3 a');link.focus({preventScroll:true});now[shown].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});}});update();})();
+
+(() => {
+  const header = document.querySelector('header');
+  if (!header) return;
+
+  function resizeHeader() {
+    const compact = header.classList.contains('is-compact');
+    header.classList.toggle('is-compact', scrollY > (compact ? 58 : 96));
+  }
+
+  window.addEventListener('scroll', resizeHeader, { passive: true });
+  resizeHeader();
+})();
+
+(() => {
+  const home = document.querySelector('.home-page main');
+  if (!home || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const observer = new IntersectionObserver(entries => {
+    for (const { target, isIntersecting } of entries) {
+      if (!isIntersecting) continue;
+      observer.unobserve(target);
+      target.classList.remove('will-enter');
+    }
+  }, { threshold: 0.08 });
+
+  for (const section of home.querySelectorAll(':scope > section:not(.hero)')) {
+    if (section.getBoundingClientRect().top < innerHeight) continue;
+    section.classList.add('reveal-section', 'will-enter');
+    observer.observe(section);
+  }
+})();
