@@ -329,19 +329,18 @@ footer .footer-main { grid-template-columns: 1fr 1fr 1.2fr; }
 .michael-intro { background: #29251f; color: var(--paper); }
 .michael-layout {
   display: grid;
-  grid-template-columns: minmax(0, 230px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
   align-items: center;
   gap: clamp(24px, 5vw, 72px);
-  max-width: 980px;
+  max-width: 1080px;
 }
 .michael-portrait {
+  display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 26%;
-  border: 1px solid var(--gold);
-  border-radius: 100px 100px 8px 8px;
+  mask-image: linear-gradient(to right, transparent, black 14%, black 86%, transparent),
+              linear-gradient(to bottom, transparent, black 4%, black 81%, transparent);
+  mask-composite: intersect;
 }
 .michael-copy h2::before {
   content: "";
@@ -402,7 +401,7 @@ footer .footer-main { grid-template-columns: 1fr 1fr 1.2fr; }
   .home-page .solutions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .home-page .product-grid { grid-template-columns: minmax(0, 1fr); }
   .michael-layout { grid-template-columns: minmax(0, 1fr); }
-  .michael-portrait { width: min(100%, 180px); }
+  .michael-portrait { width: min(100%, 300px); justify-self: center; }
   .michael-copy .button { padding-inline: 16px; }
 }
 
