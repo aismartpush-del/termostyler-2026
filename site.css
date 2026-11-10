@@ -69,6 +69,17 @@ header.is-compact .brand img { height: 62px; }
 
 .navigation .mobile-home-link { display: block; }
 .navigation-label { display: none; }
+.navigation-categories > a { gap: 6px; }
+.nav-category-icon {
+  flex: none;
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 .navigation-row > a {
   color: var(--ink);
@@ -176,6 +187,8 @@ footer .footer-main { grid-template-columns: 1fr 1fr 1.2fr; }
     background: #fffcf65c;
   }
   .navigation-categories { margin-block-start: 14px; }
+  .navigation-categories > a { gap: 10px; }
+  .nav-category-icon { width: 22px; height: 22px; }
   .category-page .navigation .mobile-section-link { display: none; }
   .home-page main > section[id] { scroll-margin-top: 24px; }
   .menu-toggle { width: 48px; height: 48px; color: var(--ink); }
