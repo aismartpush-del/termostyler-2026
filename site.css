@@ -356,7 +356,19 @@ footer .footer-main { grid-template-columns: 1fr 1fr 1.2fr; }
 .home-page .product-caption { padding: 8px 12px; gap: 8px; }
 .home-page .product-caption h3 { font-size: 16px; }
 .home-page .product-caption .icon { width: 30px; height: 30px; padding: 6px; border-color: var(--gold); }
-.home-page .expertise-grid { display: block; max-width: 760px; }
+/* Keep the explanatory copy on the right in the RTL layout. */
+.home-page .expertise-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 72px);
+  max-width: 1160px;
+}
+.home-page .expertise-photo { width: 100%; height: auto; margin: 0; }
+.home-page .expertise-photo::before { content: none; }
+.home-page .expertise-photo img { width: 100%; height: auto; }
+@media (max-width: 768px) {
+  .home-page .expertise-grid { grid-template-columns: minmax(0, 1fr); }
+}
 .home-page .project-slider .crossfade { height: clamp(320px, 43vw, 620px); }
 .home-page .testimonials { gap: 24px; margin-block-start: clamp(28px, 5vw, 60px); }
 .home-page .quote {
